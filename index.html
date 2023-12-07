@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메가MGC커피</title>
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/font_Roboto(no_italic).css">
+  <link rel="stylesheet" href="./assets/css/font_Noto_Sans_KR(no_italic).css">
+  <link rel="stylesheet" href="./assets/css/skip_menu.css"><!-- z-index:2000 -->
+  <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+  <style>
+    :root{
+      --main-color:#fdd000;
+      font-family: 'Roboto','Noto Sans KR',sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: #1c1c1b;
+    }
+    .container{
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .container-full{
+      width: 100%;
+    }
+    .container-4grid{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+    }
+    .container-6grid{
+      display: grid;
+      grid-template-columns: repeat(6,1fr);
+      gap: 20px;
+    }
+    .container-8grid{
+      display: grid;
+      grid-template-columns: repeat(8,1fr);
+      gap: 20px;
+    }
+    .container-12grid{
+      display: grid;
+      grid-template-columns: repeat(12,1fr);
+      gap: 20px;
+    }
+    .header{
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: transparent;
+      transition: 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0;
+    }
+    .header .container{
+      align-items: center;
+    }
+    .header .logo{
+      grid-column: 1/4;
+      width: 200px;
+    }
+    .header .nav{
+      grid-column: 4/10;
+    }
+    .header .nav-main{
+      gap: 0;
+      font-weight: 700;
+      font-size: 1.1em;
+      text-align: center;
+    }
+    .nav .nav-sub{
+      display: none;
+    }
+    .header .sns{
+      grid-column: 11/-1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .header .sns li{
+      width: 44px;
+      height: 44px;
+      border: 2px solid black;
+      margin-left: 0.5em;
+      border-radius: 50%;
+      padding: 3px;
+    }
+    .header .sns li:hover{
+      background-color: var(--main-color);
+    }
+    .header.active{
+      background-color: white;
+    }
+    .btn-nav{
+      display: none;
+    }
+    .swiper-sec{
+      width: 100%;
+      height: 100vh;
+    }
+    .swiper-sec-slide{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 100px;
+    }
+    .swiper-sec-slide:nth-of-type(1){
+      background-color: blueviolet;
+    }
+    .swiper-sec-slide:nth-of-type(2){
+      background-color: royalblue;
+    }
+    .swiper-sec-slide:nth-of-type(3){
+      background-color: blue;
+    }
+    .swiper-sec-slide:nth-of-type(4){
+      background-color: skyblue;
+    }
+    .swiper-sec-slide:nth-of-type(5){
+      background-color: aliceblue;
+    }
+    .swiper-sec-pagination{
+      top: auto !important;
+      right: auto !important;
+      bottom: -40px !important;
+      left: 40px !important;
+    }
+    .swiper-sec-pagination .swiper-pagination-bullet{
+      width: 100px;
+      height: 20px;
+      border-radius: 0;
+      background-color: transparent;
+      position: relative;
+      text-align: left;
+    }
+    .swiper-sec-pagination .swiper-pagination-bullet::before{
+      content: '';
+      display: inline-block;
+      width: 0px;
+      height: 2px;
+      background-color: #1c1c1b;
+      margin-right: 4px;
+      /* position: absolute;
+      top: 50%;
+      left: 0; */
+      transform: translateY(-5px);
+      transition: 0.2s;
+    }
+    .swiper-sec-pagination .swiper-pagination-bullet-active::before{
+      width: 10px;
+    }
+    .swiper-sec-pagination .swiper-pagination-bullet-active{
+      background: transparent;
+    }
+    .footer{
+      background-color: dodgerblue;
+      font-size: 200px;
+    }
+    @media(max-width:1280px){}
+    @media(max-width:760px){}
+  </style>
+</head>
+<body>
+  <div id="skip-menu"><a href="#">본문 바로가기</a></div>
+
+
+
+  <section id="wrap">
+    <header id="header" class="header"><!-- z-index:1000 -->
+      <div class="container container-12grid">
+        <h1 class="logo">
+          <div class="main-tit none">메가커피</div>
+          <div class="imgbox"><a href="./index.html"><img id="header-logo" src="./assets/images/logo-b.png" alt="로고"></a></div>
+        </h1>
+        <nav id="nav" class="nav">
+          <ul class="nav-main container-6grid">
+            <li class="nav-main-list">
+              <a href="#">메가 스토리</a>
+              <ul class="nav-sub">
+                <li class="nav-sub-list"><a href="#">브랜드</a></li>
+                <li class="nav-sub-list"><a href="#">BI</a></li>
+                <li class="nav-sub-list"><a href="#">오시는길</a></li>
+              </ul>
+            </li>
+            <li class="nav-main-list">
+              <a href="#">메뉴소개</a>
+              <ul class="nav-sub">
+                <li class="nav-sub-list"><a href="#">음료</a></li>
+                <li class="nav-sub-list"><a href="#">푸드</a></li>
+                <li class="nav-sub-list"><a href="#">상품</a></li>
+              </ul>
+            </li>
+            <li class="nav-main-list">
+              <a href="#">매장</a>
+              <ul class="nav-sub">
+                <li class="nav-sub-list"><a href="#">매장찾기</a></li>
+              </ul>
+            </li>
+            <li class="nav-main-list">
+              <a href="#">창업안내</a>
+              <ul class="nav-sub">
+                <li class="nav-sub-list"><a href="#">개설비용</a></li>
+                <li class="nav-sub-list"><a href="#">인테리어</a></li>
+                <li class="nav-sub-list"><a href="#">창업문의</a></li>
+                <li class="nav-sub-list"><a href="#">창업뉴스</a></li>
+              </ul>
+            </li>
+            <li class="nav-main-list">
+              <a href="#">메가 소식</a>
+              <ul class="nav-sub">
+                <li class="nav-sub-list"><a href="#">공지사항</a></li>
+                <li class="nav-sub-list"><a href="#">이벤트</a></li>
+                <li class="nav-sub-list"><a href="#">FAQ</a></li>
+                <li class="nav-sub-list"><a href="#">고객의 소리</a></li>
+              </ul>
+            </li>
+            <li class="nav-main-list">
+              <a href="#">채용</a>
+              <ul class="nav-sub">
+                <li class="nav-sub-list"><a href="#">채용안내</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <ul id="sns" class="sns">
+          <li><a href="#"><img src="./assets/images/sns_blog.png" alt="블로그"></a></li>
+          <li><a href="#"><img src="./assets/images/sns_facebook.png" alt="페이스북"></a></li>
+          <li><a href="#"><img src="./assets/images/sns_instagram.png" alt="인스타그램"></a></li>
+        </ul>
+        <div id="btn-nav" class="btn-nav">
+          <div class="line">btn line</div>
+        </div>
+      </div>
+    </header>
+
+
+    <main id="main" class="main swiper swiper-sec">
+      <div class="container-full swiper-wrapper swiper-sec-wrapper">
+        <section class="swiper-slide swiper-sec-slide sec-main">
+          <div class="container-full">
+            <h2 class="sec-tit">MAIN</h2>
+          </div>
+        </section>
+        <section class="swiper-slide swiper-sec-slide sec-menu">
+          <div class="container">
+            <h2 class="sec-tit">MENU</h2>
+          </div>
+        </section>
+        <section class="swiper-slide swiper-sec-slide sec-franchise">
+          <div class="container">
+            <h2 class="sec-tit">FRANCHISE</h2>
+          </div>
+        </section>
+        <section class="swiper-slide swiper-sec-slide sec-mega">
+          <div class="container">
+            <h2 class="sec-tit">MEGA</h2>
+          </div>
+        </section>
+        <section class="swiper-slide swiper-sec-slide sec-event">
+          <div class="container">
+            <h2 class="sec-tit">EVENT</h2>
+          </div>
+        </section>
+      </div>
+      <div class="swiper-pagination swiper-sec-pagination"></div>
+      
+    </main>
+
+
+    <footer id="footer" class="footer">
+      <div class="container">footer</div>
+    </footer>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // ------------ 함수 구역 ------------
+    //class='active' 제어 함수
+    function addActive(el){
+      el.classList.add('active');
+    }
+    function removeActive(el){
+      el.classList.remove('active');
+    }
+    // ------------ 함수 구역 끝 ------------
+
+
+
+    // ------------ main swiper ------------
+    //main swiper 설정
+    const swiperSec = new Swiper(".swiper-sec", {
+      direction: "vertical",
+      speed:200,
+      mousewheel: true,
+      pagination: {
+        el: ".swiper-sec-pagination",
+        clickable: true,
+      },
+    });
+
+    //마지막 슬라이드에서 마우스 스크롤 활성화
+    swiperSec.on('reachEnd',function(){
+      swiperSec.mousewheel.disable();
+    });
+    
+    const header=document.getElementById('header');
+    let arySlide=document.getElementsByClassName('swiper-sec-slide');
+    let firstSlide=arySlide[0];
+    let lastSlide=arySlide[arySlide.length-1];
+    let logoImg=document.getElementById('header-logo');
+    window.onwheel=function(e){
+      //마지막 슬라이드에서 위로 스크롤 할시 스와이퍼 휠 컨트롤 활성화
+      if(lastSlide.classList.contains('swiper-slide-active')){
+        if(e.deltaY>0){
+          swiperSec.mousewheel.disable();
+        }
+        else{
+          swiperSec.mousewheel.enable();
+        }
+      }
+    }
+    //첫번째 슬라이드에서 움직일 때 헤더 백그라운드 변경&헤더 로고 이미지 변경
+    swiperSec.on('slideChangeTransitionStart',function(){
+      let logoSrc=logoImg.getAttribute('src');
+      if(firstSlide.classList.contains('swiper-slide-active')){
+        removeActive(header);
+        logoSrc=logoSrc.replace('y','b');
+        logoImg.setAttribute('src',logoSrc);
+      }
+      else{
+        addActive(header);
+        logoSrc=logoSrc.replace('b','y');
+        logoImg.setAttribute('src',logoSrc);
+      }
+    })
+    // ------------ main swiper 끝 ------------
+
+
+    // ------------ pagination ------------
+    let arySecTitle=document.getElementsByClassName('sec-tit');
+    let aryPaginationSpan=document.getElementsByClassName('swiper-sec-pagination')[0].children;
+    for(let i=0;i<aryPaginationSpan.length;i++){
+      let creatSpan=document.createElement('span');
+      aryPaginationSpan[i].append(creatSpan);
+      aryPaginationSpan[i].children[0].innerText=arySecTitle[i].innerText;
+    }
+    //pagination 클릭시 휠 활성화&footer 아래로
+    let footerHeight=document.getElementById('footer').offsetHeight;
+    for(let i=0;i<aryPaginationSpan.length;i++){
+      aryPaginationSpan[i].onclick=function(){
+        swiperSec.mousewheel.enable();
+        scrollBy({
+          top:-footerHeight,
+          behavior:"smooth",
+        })
+      }
+    }
+    // ------------ pagination 끝 ------------
+
+
+    // ------------ header ------------
+    // ------------ header 끝 ------------
+
+
+    // ------------ sub swiper ------------
+    const swiperSub = new Swiper(".swiper-sub", {
+      direction: "horizontal",
+      slidesPerView: 1,
+      speed:200,
+      mousewheel: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+    // ------------ sub swiper 끝 ------------
+  </script>
+</body>
+</html>
