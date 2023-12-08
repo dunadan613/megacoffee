@@ -18,7 +18,11 @@
       font-size: 16px;
       color: #1c1c1b;
     }
+    ::-webkit-scrollbar{
+      display: none;
+    }
     .container{
+      width: 100%;
       max-width: 1280px;
       margin: 0 auto;
     }
@@ -52,44 +56,156 @@
       left: 0;
       z-index: 1000;
       background-color: transparent;
-      transition: 0.2s;
+      transition: 0.3s;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 30px 0;
+      overflow: hidden;
     }
     .header .container{
       align-items: center;
+      display: grid;
+      grid-template-columns: repeat(11,1fr) auto;
+      width: 100%;
+      padding: 0 10px;
     }
     .header .logo{
-      grid-column: 1/4;
+      grid-column: 1/3;
       width: 200px;
+      margin-right: auto;
     }
     .header .nav{
       grid-column: 4/10;
     }
     .header .nav-main{
-      gap: 0;
-      font-weight: 700;
+      gap: 0px;
+      font-weight: 500;
       font-size: 1.1em;
       text-align: center;
+      width: 660px;
+    }
+    .nav-main .nav-main-list{
+      position: relative;
+    }
+    .nav-main .nav-main-list>a{
+      position: relative;
+    }
+    .nav-main .nav-main-list::before,
+    .nav-main .nav-main-list::after{
+      content: '';
+      display: block;
+    }
+    .nav-main .nav-main-list::before{
+      position: absolute;
+      top: -100px;
+      right: 0;
+      bottom: -300px;
+      left: 0;
+      display: none;
+      height: 0;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .nav-main .nav-main-list:hover::before{
+      display: block;
+      height: auto;
+      background-color: #fdd000;
+    }
+    .nav-main .nav-main-list::after{
+      display: block;
+      width: 0;
+      height: 1px;
+      background-color: #1c1c1b;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: 0.3s;
+    }
+    .nav-main .nav-main-list:hover::after{
+      width: 50px;
     }
     .nav .nav-sub{
+      position: absolute;
+      top: 80px;
+      right: 0;
+      left: 0;
+      height: 0;
+      overflow: hidden;
+      font-weight: 400;
+      font-size: 0.8em;
+      transition: 0.3s;
+    }
+    .nav-sub .nav-sub-list{
+      margin-bottom: 0.6em;
+    }
+    .nav-sub .nav-sub-list:hover{
+      text-decoration: underline;
+    }
+    .btn-nav{
+      margin-left: 15px;
+      padding: 4px 0;
+    }
+    .btn-nav,
+    .btn-nav-close{
       display: none;
+      flex-flow: row wrap;
+      align-content: space-between;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      position: relative;
+      text-indent: -99999px;
+      grid-column: 12/-1;
+    }
+    .btn-nav-close{
+      position: fixed;
+      top: 35px;
+      right: 20px;
+      z-index: 500;
+    }
+    .btn-nav::before,
+    .btn-nav::after,
+    .btn-nav-close::before,
+    .btn-nav-close::after{
+      content: '';
+      display: block;
+    }
+    .btn-nav::before,
+    .btn-nav::after,
+    .btn-nav .line{
+      width: 100%;
+      height: 2px;
+      background-color: black;
+    }
+    .btn-nav-close::before,
+    .btn-nav-close::after,
+    .btn-nav-close .line{
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      position: absolute;
+    }
+    .btn-nav-close::before{
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .btn-nav-close::after{
+      transform: translateY(-50%) rotate(135deg);
     }
     .header .sns{
-      grid-column: 11/-1;
+      grid-column: 10/-1;
       display: flex;
       justify-content: flex-end;
       align-items: center;
     }
     .header .sns li{
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border: 2px solid black;
-      margin-left: 0.5em;
+      margin-right: 10px;
       border-radius: 50%;
-      padding: 3px;
+      padding: 2px;
     }
     .header .sns li:hover{
       background-color: var(--main-color);
@@ -97,9 +213,7 @@
     .header.active{
       background-color: white;
     }
-    .btn-nav{
-      display: none;
-    }
+    
     .swiper-sec{
       width: 100%;
       height: 100vh;
@@ -110,34 +224,24 @@
       align-items: center;
       font-size: 100px;
     }
-    .swiper-sec-slide:nth-of-type(1){
-      background-color: blueviolet;
-    }
-    .swiper-sec-slide:nth-of-type(2){
-      background-color: royalblue;
-    }
-    .swiper-sec-slide:nth-of-type(3){
-      background-color: blue;
-    }
-    .swiper-sec-slide:nth-of-type(4){
-      background-color: skyblue;
-    }
-    .swiper-sec-slide:nth-of-type(5){
-      background-color: aliceblue;
-    }
     .swiper-sec-pagination{
       top: auto !important;
       right: auto !important;
-      bottom: -40px !important;
-      left: 40px !important;
+      bottom: -50px !important;
+      left: 30px !important;
     }
-    .swiper-sec-pagination .swiper-pagination-bullet{
-      width: 100px;
+    .main .swiper-sec-pagination .swiper-pagination-bullet{
+      width: 120px;
       height: 20px;
       border-radius: 0;
       background-color: transparent;
       position: relative;
       text-align: left;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .swiper-sec-pagination .swiper-pagination-bullet:last-of-type{
+      margin-bottom: 0;
     }
     .swiper-sec-pagination .swiper-pagination-bullet::before{
       content: '';
@@ -146,9 +250,6 @@
       height: 2px;
       background-color: #1c1c1b;
       margin-right: 4px;
-      /* position: absolute;
-      top: 50%;
-      left: 0; */
       transform: translateY(-5px);
       transition: 0.2s;
     }
@@ -158,12 +259,132 @@
     .swiper-sec-pagination .swiper-pagination-bullet-active{
       background: transparent;
     }
+    .main .container-full{
+      height: 100%;
+    }
+    .main .swiper-main-banner,
+    .main .swiper-main-banner img{
+      height: 100%;
+    }
+    .main .swiper-main-banner-pagination{
+      bottom: -10px;
+    }
+    .swiper-main-banner-pagination .swiper-pagination-bullet{
+      background-color: #eee;
+      width: 20px;
+      height: 8px;
+      border-radius: 100px !important;
+    }
+    .swiper-main-banner-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+      width: 48px;
+    }
     .footer{
       background-color: dodgerblue;
       font-size: 200px;
     }
-    @media(max-width:1280px){}
-    @media(max-width:760px){}
+    @media(max-width:1280px){
+      .header{
+        padding: 0;
+      }
+      .header .container{
+        padding: 0 20px;
+      }
+      .header .logo{
+        padding: 15px 0;
+      }
+      .nav{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: #222222;
+        padding: 60px 60px 30px;
+        color: white;
+        transform: translateX(100%);
+        transition: transform 0.3s;
+      }
+      .nav::before{
+        content: '';
+        display: block;
+        width: 200px;
+        height: 60px;
+        margin: 0 auto 60px;
+        background-image: url(./assets/images/logo-w.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+      .nav.active{
+        transform: translateX(0);
+      }
+      .nav .nav-main{
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .nav .nav-main .nav-main-list{
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 100px;
+      }
+      .nav-main .nav-main-list:hover::before,
+      .nav-main .nav-main-list:hover::after{
+        display: none;
+      }
+      .nav .nav-sub{
+        color: #aaa;
+        top: 0 !important;
+        right: auto !important;
+        left: 200px !important;
+        height: auto !important;
+      }
+      .nav-sub .nav-sub-list:hover{
+        color: white;
+      }
+      .btn-nav{
+        display: flex;
+      }
+      .btn-nav-close{
+        display: block;
+      }
+      .header .sns{
+        grid-column: 8/12;
+      }
+    }
+    @media(max-width:760px){
+      .header{
+        height: auto !important;
+      }
+      .header .logo{
+        width: 160px;
+      }
+      .nav{
+        left: auto;
+        bottom: 0;
+        width: 240px;
+        background-size: 180px;
+        padding: 50px 30px 30px;
+      }
+      .nav::before{
+        width: 175px;
+        margin-bottom: 30px;
+      }
+      .nav .nav-main .nav-main-list{
+        padding: 20px 0;
+        border: none;
+        padding: 0;
+        font-size: 0.8em;
+      }
+      .nav .nav-sub{
+        position: static;
+        padding: 20px 0 0 20px;
+        display: none;
+      }
+      .header .sns{
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -173,7 +394,7 @@
 
   <section id="wrap">
     <header id="header" class="header"><!-- z-index:1000 -->
-      <div class="container container-12grid">
+      <div class="container">
         <h1 class="logo">
           <div class="main-tit none">메가커피</div>
           <div class="imgbox"><a href="./index.html"><img id="header-logo" src="./assets/images/logo-b.png" alt="로고"></a></div>
@@ -227,6 +448,9 @@
               </ul>
             </li>
           </ul>
+          <div id="btn-nav-close" class="btn-nav-close"><!-- z-index:500 -->
+            <div class="line none">close</div>
+          </div>
         </nav>
         <ul id="sns" class="sns">
           <li><a href="#"><img src="./assets/images/sns_blog.png" alt="블로그"></a></li>
@@ -244,7 +468,20 @@
       <div class="container-full swiper-wrapper swiper-sec-wrapper">
         <section class="swiper-slide swiper-sec-slide sec-main">
           <div class="container-full">
-            <h2 class="sec-tit">MAIN</h2>
+            <h2 class="sec-tit none">MAIN</h2>
+            <div class="swiper swiper-main-banner">
+              <div class="swiper-wrapper swiper-main-banner-wrapper">
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide01.jpg" alt=""></div>
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide02.jpg" alt=""></div>
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide03.jpg" alt=""></div>
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide04.jpg" alt=""></div>
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide05.jpg" alt=""></div>
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide06.jpg" alt=""></div>
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide07.jpg" alt=""></div>
+                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide08.jpg" alt=""></div>
+              </div>
+            </div>
+            <div class="swiper-pagination swiper-main-banner-pagination"></div>
           </div>
         </section>
         <section class="swiper-slide swiper-sec-slide sec-menu">
@@ -281,11 +518,16 @@
   <script>
     // ------------ 함수 구역 ------------
     //class='active' 제어 함수
-    function addActive(el){
+    function fnAddActive(el){
       el.classList.add('active');
     }
-    function removeActive(el){
+    function fnRemoveActive(el){
       el.classList.remove('active');
+    }
+
+    //display 제어
+    function fnDisplay(el,opt){
+      el.style.display=opt;
     }
     // ------------ 함수 구역 끝 ------------
 
@@ -321,6 +563,10 @@
         }
         else{
           swiperSec.mousewheel.enable();
+          scrollBy({
+            top:-footerHeight,
+            behavior:"smooth",
+          })
         }
       }
     }
@@ -328,12 +574,18 @@
     swiperSec.on('slideChangeTransitionStart',function(){
       let logoSrc=logoImg.getAttribute('src');
       if(firstSlide.classList.contains('swiper-slide-active')){
-        removeActive(header);
+        fnRemoveActive(header);
         logoSrc=logoSrc.replace('y','b');
         logoImg.setAttribute('src',logoSrc);
+        //슬라이드시 nav배경 제어
+        for(let i=0;i<aryMainList.length;i++){
+          if(firstSlide.classList.contains('swiper-slide-active')){
+            aryMainList[i].style.backgroundColor='transparent';
+          }
+        }
       }
       else{
-        addActive(header);
+        fnAddActive(header);
         logoSrc=logoSrc.replace('b','y');
         logoImg.setAttribute('src',logoSrc);
       }
@@ -342,6 +594,7 @@
 
 
     // ------------ pagination ------------
+    //pagination 글자 넣기
     let arySecTitle=document.getElementsByClassName('sec-tit');
     let aryPaginationSpan=document.getElementsByClassName('swiper-sec-pagination')[0].children;
     for(let i=0;i<aryPaginationSpan.length;i++){
@@ -364,21 +617,73 @@
 
 
     // ------------ header ------------
+    //nav 제어
+    const nav=document.getElementById('nav');
+    const NavMain=document.getElementsByClassName('nav-main')[0];
+    const aryMainList=document.getElementsByClassName('nav-main-list');
+    const aryNavSub=document.getElementsByClassName('nav-sub');
+
+    header.onmouseenter=function(){
+      fnAddActive(header);
+    }
+
+    NavMain.onmouseenter=function(){
+      if(window.innerWidth>1280){
+        for(let i=0;i<aryNavSub.length;i++){
+          aryNavSub[i].style.height='120px';
+        }
+        header.style.height='250px';
+      }
+    }
+
+    header.onmouseleave=function(){
+      if(window.innerWidth>1280){
+        for(let i=0;i<aryNavSub.length;i++){
+          aryNavSub[i].style.height='0';
+        }
+        header.style.height='104px';
+      }
+      if(firstSlide.classList.contains('swiper-slide-active')){
+          fnRemoveActive(header);
+        }
+    }
+    
+    const btnNavOpen=document.getElementById('btn-nav');
+    const btnNavClose=document.getElementById('btn-nav-close');
+    if(window.innerWidth<1280){
+      btnNavOpen.onclick=function(){
+        fnAddActive(nav);
+        fnDisplay(btnNavOpen,'none');
+      }
+      btnNavClose.onclick=function(){
+        fnRemoveActive(nav);
+        fnDisplay(btnNavOpen,'flex');
+      }
+    }
+    window.onresize=function(){
+      if(window.innerWidth>1280){
+        fnRemoveActive(nav);
+        fnDisplay(btnNavOpen,'none');
+      }
+      else if(1270<window.innerWidth && window.innerWidth<1280){
+        fnDisplay(btnNavOpen,'flex');
+      }
+    }//네비 활성화 & 창 크기 변경시 네비버튼 나타남 수정 필요
+    
     // ------------ header 끝 ------------
 
 
-    // ------------ sub swiper ------------
-    const swiperSub = new Swiper(".swiper-sub", {
+    // ------------ main banner swiper ------------
+    const swiperMainBanner = new Swiper(".swiper-main-banner", {
       direction: "horizontal",
-      slidesPerView: 1,
       speed:200,
-      mousewheel: true,
+      mousewheel: false,
       pagination: {
-        el: ".swiper-pagination",
+        el: ".swiper-main-banner-pagination",
         clickable: true,
       },
     });
-    // ------------ sub swiper 끝 ------------
+    // ------------ main banner swiper 끝 ------------
   </script>
 </body>
 </html>
