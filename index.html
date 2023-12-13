@@ -17,14 +17,19 @@
       font-weight: 500;
       font-size: 16px;
       color: #1c1c1b;
+      word-break: keep-all;
     }
     ::-webkit-scrollbar{
       display: none;
+    }
+    ::selection{
+      background-color: #fdd000;
     }
     .container{
       width: 100%;
       max-width: 1280px;
       margin: 0 auto;
+      padding: 0 20px;
     }
     .container-full{
       width: 100%;
@@ -49,6 +54,10 @@
       grid-template-columns: repeat(12,1fr);
       gap: 20px;
     }
+    br.pc{
+      display: block;
+      margin: 0 auto;
+    }
     .header{
       position: fixed;
       top: 0;
@@ -68,7 +77,7 @@
       display: grid;
       grid-template-columns: repeat(11,1fr) auto;
       width: 100%;
-      padding: 0 10px;
+      padding: 0px;
     }
     .header .logo{
       grid-column: 1/3;
@@ -203,7 +212,7 @@
       width: 42px;
       height: 42px;
       border: 2px solid black;
-      margin-right: 10px;
+      margin-right: 8px;
       border-radius: 50%;
       padding: 2px;
     }
@@ -213,16 +222,9 @@
     .header.active{
       background-color: white;
     }
-    
     .swiper-sec{
       width: 100%;
       height: 100vh;
-    }
-    .swiper-sec-slide{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 100px;
     }
     .swiper-sec-pagination{
       top: auto !important;
@@ -262,15 +264,48 @@
     .main .container-full{
       height: 100%;
     }
-    .main .swiper-main-banner,
-    .main .swiper-main-banner img{
-      height: 100%;
+    .main .swiper-main-banner{
+      width: 100%;
+      height: 100vh;
+    }
+    .main .swiper-main-banner-wrapper .swiper-slide{
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      cursor: pointer;
+    }
+    .main .main-banner0{
+      background-image: url(./assets/images/main-slide00.jpg);
+    }
+    .main .main-banner1{
+      background-image: url(./assets/images/main-slide01.jpg);
+    }
+    .main .main-banner2{
+      background-image: url(./assets/images/main-slide02.jpg);
+    }
+    .main .main-banner3{
+      background-image: url(./assets/images/main-slide03.jpg);
+    }
+    .main .main-banner4{
+      background-image: url(./assets/images/main-slide04.jpg);
+    }
+    .main .main-banner5{
+      background-image: url(./assets/images/main-slide05.jpg);
+    }
+    .main .main-banner6{
+      background-image: url(./assets/images/main-slide06.jpg);
+    }
+    .main .main-banner7{
+      background-image: url(./assets/images/main-slide07.jpg);
+    }
+    .main .main-banner8{
+      background-image: url(./assets/images/main-slide08.jpg);
     }
     .main .swiper-main-banner-pagination{
-      bottom: -10px;
+      bottom: 10px;
     }
     .swiper-main-banner-pagination .swiper-pagination-bullet{
-      background-color: #eee;
+      background-color: #fff;
       width: 20px;
       height: 8px;
       border-radius: 100px !important;
@@ -278,11 +313,318 @@
     .swiper-main-banner-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
       width: 48px;
     }
+    .sec-menu .container,
+    .sec-franchise .container,
+    .sec-mega .container{
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .art{
+      width: 50%;
+    }
+    .art-first{
+      padding: 150px 40px 0 calc(50% - 515px);
+    }
+    .art-last{
+      padding-top: 150px;
+    }
+    .art-first .m-tit{
+      font-size: 1.4em;
+      margin-bottom: 1em;
+    }
+    .art-first .m-tit:nth-of-type(1){
+      font-weight: 300;
+    }
+    .art-first .l-tit{
+      margin-bottom: 0.5em;
+      font-size: 3.4em;
+      font-weight: 900;
+    }
+    .art-first .m-txt{
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 1.5em;
+    }
+    .swiper-menu .swiper-wrapper{
+      align-items: flex-end;
+    }
+    .swiper-menu .swiper-slide{
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 450px;
+      overflow: hidden;
+    }
+    .art-menu-first .btn-menu a{
+      display: inline-block;
+      background-color: var(--main-color);
+      padding: 1em 2em;
+      font-size: 1.2em;
+    }
+    .swiper-menu .swiper-slide .menu-con-box{
+      background-color: #f9f9f9;
+      padding: 2em;
+      display: none;
+    }
+    .swiper-menu .swiper-slide-active .menu-con-box{
+      display: block;
+    }
+    .art-menu-last .menu-con-box .l-tit{
+      font-size: 1.4em;
+      margin-bottom: 0.5em;
+    }
+    .art-menu-last .menu-con-box .m-tit,
+    .art-menu-last .menu-con-box .con-txt{
+      margin-bottom: 1.4em;
+      font-weight: 400;
+      font-size: 0.9em;
+      line-height: 1.5;
+      color: #aaa;
+    }
+    .art-menu-last .menu-con-box .con-txt{
+      margin-bottom: 0;
+    }
+    .art-menu .swiper-button-prev,
+    .art-menu .swiper-button-next{
+      top: 100px;
+      left: 480px;
+      color: #aaa;
+    }
+    .art-menu .swiper-button-prev::after,
+    .art-menu .swiper-button-next::after{
+      font-size: 70px;
+    }
+    .art-menu .swiper-button-next{
+      left: 570px;
+    }
+    .sec-franchise{
+      background-color: var(--main-color);
+    }
+    .sec-franchise .art{
+      padding-top: 250px;
+    }
+    .sec-franchise .l-tit{
+      line-height: 1em;
+    }
+    .sec-franchise .l-tit span{
+      font-size: 0.8em;
+    }
+    .sec-franchise .iframe-box{
+      height: 350px;
+    }
+    .sec-franchise iframe{
+      height: 100%;
+    }
+    .sec-franchise .shortcut{
+      padding: 1em 2em;
+      background-color: #1c1c1b;
+      font-weight: 700;
+      font-size: 1.2em;
+      color: white;
+      text-align: center;
+    }
+    .sec-mega .container{
+      padding: 0;
+      max-width: 100%;
+    }
+    .sec-mega .art-first{
+      padding-top: 200px;
+    }
+    .sec-mega .l-tit{
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+    .sec-mega .btn-brand{
+      margin-right: 1em;
+    }
+    .sec-mega .art-last{
+      height: 100vh;
+      background-image: url(./assets/images/back-img.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    .sec-mega button{
+      border: none;
+      padding: 10px 30px;
+      background-color: var(--main-color);
+      font-weight: 500;
+      font-size: 18px;
+    }
+    .sec-event .container{
+      margin-top: 120px;
+      padding: 0;
+      height: 100vh;
+    }
+    .sec-event .art-event{
+      width: 100%;
+      text-align: center;
+      padding: 0 100px;
+    }
+    .sec-event .art-event-first{
+      right: 35%;
+      left: 35%;
+    }
+    .sec-event .l-tit{
+      font-size: 4em;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+    .sec-event .event-card{
+      max-width: 1280px;
+      margin: 0 auto 2em;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+    .sec-event .event-card a{
+      display: inline-block;
+      width: 32%;
+    }
+    .event-card li{
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-flow: row wrap;
+    }
+    .event-card li .card-con{
+      padding: 8%;
+      font-weight: 300;
+      font-size: 1.4em;
+      text-align: left;
+    }
+    .card-con .card-tit{
+      margin-bottom: 2em;
+      white-space: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: normal;
+      height: 1.5em;
+    }
+    .card-con .card-date{
+      font-weight: 300;
+      font-size: 0.65em;
+    }
+    .art-event .btn-event{
+      margin: 0 auto;
+      padding: 0 30px;
+      width: 165px;
+      height: 55px;
+      background-color: var(--main-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .art-event p.sub-txt{
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
     .footer{
-      background-color: dodgerblue;
-      font-size: 200px;
+      max-width: 100%;
+    }
+    .footer-top{
+      padding: 20px;
+      background-color: var(--main-color);
+    }
+    .footer-top .container{
+      padding: 0;
+    }
+    .footer-top ul{
+      display: flex;
+    }
+    .footer-top li{
+      margin-right: 20px;
+    }
+    .footer-bottom{
+      background-color: #212121;
+      color: #aaa;
+      padding: 60px 20px;
+    }
+    .footer-bottom .container{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 0 auto;
+      padding: 0;
+      max-width: 1280px;
+    }
+    .footer-left .footer-logo{
+      display: flex;
+      justify-content: left;
+      margin-bottom: 20px;
+    }
+    .footer-logo li{
+      margin-right: 25px;
+    }
+    .footer-logo img{
+      max-width: 180px;
+    }
+    .footer-logo .footer-sns{
+      display: flex;
+      justify-content: space-between;
+    }
+    .footer-sns .imgbox{
+      width: 33px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .footer-sns .imgbox a{
+      display: block;
+      padding: 2px;
+      position: relative;
+    }
+    .footer-sns .imgbox img{
+      vertical-align: middle;
+    }
+    .footer-left .address{
+      margin-top: 20px;
+      font-size: 0.9em;
+      font-weight: 400;
+    }
+    .footer-left .address ul{
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%;
+    }
+    .footer-left .address li{
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    .footer-left b{
+      color: white;
+    }
+    .footer-right .footer-nav{
+      display: flex;
+      justify-content: space-around;
+      font-weight: 400;
+    }
+    .footer-right .footer-nav li{
+      margin-right: 20px;
+    }
+    .footer-nav p.footer-nav-tit{
+      color: white;
+    }
+    .footer-nav .footer-nav-sub{
+      margin-top: 20px;
+      font-size: 0.8em;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      align-items: left;
+    }
+    .footer-nav .footer-nav-sub li{
+      margin-bottom: 10px;
     }
     @media(max-width:1280px){
+      br.pc{
+        display: none;
+      }
       .header{
         padding: 0;
       }
@@ -351,13 +693,84 @@
       .header .sns{
         grid-column: 8/12;
       }
+      .swiper-sec-pagination{
+        display: none;
+      }
+      .art-first{
+        padding: 120px 40px 0;
+        font-size: 0.9em;
+      }
+      .swiper-menu .swiper-slide{
+        width: 420px;
+        font-size: 0.9em;
+      }
+      .art-menu .swiper-button-prev,
+      .art-menu .swiper-button-next{
+        display: none;
+      }
+      .footer-top{
+        font-size: 0.8em;
+      }
+      .footer-top ul{
+        justify-content: center;
+        font-size: 0.9em;
+      }
+      .footer-bottom{
+        padding: 0;
+      }
+      .footer-bottom .container{
+        margin-bottom: 30px;
+        padding: 30px;
+        display: flex;
+      }
+      .footer-left .footer-logo{
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer-logo ul{
+        margin-bottom: 15px;
+      }
+      .footer-logo li{
+        margin: 0;
+      }
+      .footer-logo li:last-of-type{
+        margin-top: 15px;
+      }
+      .footer-sns .imgbox:last-of-type{
+        margin-right: 0;
+      }
+      .footer-left .address ul{
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8em;
+      }
+      .footer-right{
+        display: none;
+      }
+    }
+    @media(max-width:1000px){
+      .swiper-menu .swiper-slide{
+        width: 90%;
+      }
+      .sec-mega .btn-brand{
+        margin-bottom: 1em;
+      }
+      .sec-event .event-card{
+        font-size: 0.95em;
+      }
+    }
+    @media(max-width:840px){
+      .sec-franchise button{
+        font-size: 0.9em;
+      }
     }
     @media(max-width:760px){
       .header{
         height: auto !important;
       }
       .header .logo{
-        width: 160px;
+        width: 150px;
       }
       .nav{
         left: auto;
@@ -383,6 +796,155 @@
       }
       .header .sns{
         display: none;
+      }
+      .main .main-banner1{
+        background-image: url(./assets/images/m-main-slide01.jpg);
+      }
+      .main .main-banner2{
+        background-image: url(./assets/images/m-main-slide02.jpg);
+      }
+      .main .main-banner3{
+        background-image: url(./assets/images/m-main-slide03.jpg);
+      }
+      .main .main-banner4{
+        background-image: url(./assets/images/m-main-slide04.jpg);
+      }
+      .main .main-banner5{
+        background-image: url(./assets/images/m-main-slide05.jpg);
+      }
+      .main .main-banner6{
+        background-image: url(./assets/images/m-main-slide06.jpg);
+      }
+      .main .main-banner7{
+        background-image: url(./assets/images/m-main-slide07.jpg);
+      }
+      .main .main-banner8{
+        background-image: url(./assets/images/m-main-slide08.jpg);
+      }
+      .art{
+        width: 100%;
+      }
+      .art-first{
+        padding: 110px 20px 0;
+        font-size: 0.8em;
+      }
+      .art-last{
+        padding-top: 30px;
+      }
+      .swiper-menu .swiper-slide{
+        width: 200px;
+        font-size: 0.5em;
+      }
+      .swiper-menu .swiper-slide .menu-con-box{
+        display: block;
+        padding: 1.5em;
+        background-color: white;
+      }
+      .swiper-menu .art-last .m-tit,
+      .swiper-menu .art-last .l-tit,
+      .swiper-menu .art-last .con-txt{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .swiper-menu .art-last .con-txt{
+        white-space: normal;
+        height: 30px;
+      }
+      .sec-franchise .art-first{
+        padding-top: 80px;
+      }
+      .sec-franchise .art-last{
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .sec-mega .art-first{
+        position: relative;
+        z-index: 10;
+        font-size: 0.6em;
+        padding-top: 35vh;
+      }
+      .sec-mega .art-first .m-txt{
+        margin-bottom: 4em;
+      }
+      .sec-mega button{
+        padding: 8px 15px;
+      }
+      .sec-mega .art-last{
+        position: relative;
+        z-index: 5;
+        transform: translateY(-15vh);
+        opacity: 0.1;
+      }
+      .sec-event{
+        background-color: white;
+      }
+      .sec-event .art-event{
+        padding: 30px;
+        padding-top: 60px;
+      }
+      .sec-event .l-tit{
+        font-size: 2em;
+      }
+      .sec-event .m-tit{
+        margin-bottom: 15px;
+      }
+      .sec-event .event-card{
+        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: 1fr;
+      }
+      .event-card li{
+        grid-column: 1/-1;
+        flex-flow: row nowrap;
+      }
+      .event-card .imgbox{
+        width: 120px;
+      }
+      .event-card li .card-con{
+        padding: 10px;
+        font-size: 1rem;
+      }
+      .art-event p.sub-txt{
+        font-size: 0.8em;
+        margin-bottom: 15px;
+      }
+      .art-event .btn-event{
+        width: 133px;
+        height: 40px;
+        padding: 0 20px;
+      }
+      .footer-top{
+        padding: 15px;
+        font-size: 0.8em;
+      }
+      .footer-bottom{
+        padding: 30px;
+      }
+      .footer-bottom .container{
+        margin-bottom: 30px;
+      }
+      .footer-left .footer-logo{
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer-logo ul{
+        margin-bottom: 15px;
+      }
+      .footer-logo li{
+        margin: 0;
+      }
+      .footer-logo li:last-of-type{
+        margin-top: 15px;
+      }
+      .footer-sns .imgbox:last-of-type{
+        margin-right: 0;
+      }
+      .footer-left .address ul{
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8em;
       }
     }
   </style>
@@ -466,44 +1028,220 @@
 
     <main id="main" class="main swiper swiper-sec">
       <div class="container-full swiper-wrapper swiper-sec-wrapper">
+
         <section class="swiper-slide swiper-sec-slide sec-main">
           <div class="container-full">
             <h2 class="sec-tit none">MAIN</h2>
             <div class="swiper swiper-main-banner">
               <div class="swiper-wrapper swiper-main-banner-wrapper">
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide01.jpg" alt=""></div>
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide02.jpg" alt=""></div>
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide03.jpg" alt=""></div>
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide04.jpg" alt=""></div>
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide05.jpg" alt=""></div>
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide06.jpg" alt=""></div>
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide07.jpg" alt=""></div>
-                <div class="swiper-slide main-banner"><img src="./assets/images/main-slide08.jpg" alt=""></div>
+                <div class="swiper-slide main-banner0"></div>
+                <div class="swiper-slide main-banner1"></div>
+                <div class="swiper-slide main-banner2"></div>
+                <div class="swiper-slide main-banner3"></div>
+                <div class="swiper-slide main-banner4"></div>
+                <div class="swiper-slide main-banner5"></div>
+                <div class="swiper-slide main-banner6"></div>
+                <div class="swiper-slide main-banner7"></div>
+                <div class="swiper-slide main-banner8"></div>
               </div>
             </div>
             <div class="swiper-pagination swiper-main-banner-pagination"></div>
           </div>
         </section>
+
         <section class="swiper-slide swiper-sec-slide sec-menu">
-          <div class="container">
-            <h2 class="sec-tit">MENU</h2>
+          <div class="container container-full">
+            <h2 class="sec-tit none">MENU</h2>
+            <article class="art-menu art-menu-first art-first art">
+              <p class="m-tit">귀여운 악당 미니언즈의 우당탕탕</p>
+              <h3 class="l-tit"><span>Happy MEGA Party</span></h3>
+              <p class="m-tit">메가MGC커피와 미니언즈가 함께하는 겨울 신메뉴</p>
+              <p class="m-txt">
+                미니언즈를 닮은 홀케이크부터 음료, 귀여운 굿즈까지
+                <br>
+                연말 연시 파티는 가까운 메가MGC커피에서 즐겨보세요!
+              </p>
+              <div class="btn-menu"><a href="#">메뉴 더보기</a></div>
+            </article>
+            <article class="art-menu art-menu-last art-last art">
+              <div class="swiper swiper-menu">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide01.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">추카포카 미니언즈 파티 홀케이크</h4>
+                      <p class="m-tit">Minions party Whole cake</p>
+                      <p class="con-txt">
+                        [한정판매] 떠들썩한 파티타임엔 꾸덕하고 진한 초코가나슈, 달콤한 초코크림, 부드러운 우유크림이 레이어링된 미니언즈 케이크
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide02.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">왁자지껄 팝핑 스무디언즈</h4>
+                      <p class="m-tit">Loudly popping Minions smoothie</p>
+                      <p class="con-txt">
+                        [한정판매] 달달한 바나나 우유 스무디에  톡톡 터지는 팝핑캔디가 가득! 스무디가 된 미니언즈 음료
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide03.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">우당탕탕 뚝딱 미니언라떼</h4>
+                      <p class="m-tit">Crack and bustle Crack! Minion Latte</p>
+                      <p class="con-txt">
+                        [한정판매] 달달 고소한 바나나 라떼에 다양한 취향을 가진 미니언즈를 위한 5가지 토핑 중 하나를 선택해 즐기는 이색 라떼 음료
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide04.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">바나바나 초코 미니언라떼</h4>
+                      <p class="m-tit">Banana choco Minion Latte</p>
+                      <p class="con-txt">
+                        [한정판매] 추운 겨울을 따뜻하고 달콤하게 채워 줄 바나나 핫초코 미니언즈 음료
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide05.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">미니언즈 틴토이</h4>
+                      <p class="m-tit">Minions Tin Toy</p>
+                      <p class="con-txt">
+                        [한정판매] 미니언즈 콜렉터라면 수집욕구 뿜뿜! 틴케이스로 활용 가능한 랜덤 틴토이!
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide06.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">미니언즈 콜드컵</h4>
+                      <p class="m-tit">Minions Cold Cup</p>
+                      <p class="con-txt">
+                        [한정판매] 메가MGC커피와 함께라면 미니언즈 콜드컵도 640ml 대용량
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide07.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">미니언즈 머들러</h4>
+                      <p class="m-tit">Minions Mudler</p>
+                      <p class="con-txt">
+                        [한정수량] 스테인리스로 만들어 내구성이 강한 미니언즈 머들러로 귀여운 홈카페 완성!
+                      </p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide swiper-menu-slide">
+                    <div class="imgbox"><img src="./assets/images/img-menu-slide08.jpg" alt=""></div>
+                    <div class="menu-con-box">
+                      <h4 class="l-tit">미니언즈 빨대&덮개</h4>
+                      <p class="m-tit">Minions Straws & Cover</p>
+                      <p class="con-txt">
+                        [한정판매] 귀여운 미니언즈 덮개로 빨대의 입구를 보호, 위생적으로 관리할 수 있는 빨대&덮개
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            </article>
           </div>
         </section>
+
         <section class="swiper-slide swiper-sec-slide sec-franchise">
           <div class="container">
-            <h2 class="sec-tit">FRANCHISE</h2>
+            <h2 class="sec-tit none">FRANCHISE</h2>
+            <article class="art-fran art-fran-first art-first art">
+              <p class="m-tit">거품 없는 창업비용</p>
+              <h3 class="l-tit"><span>FRANCHISE<br>MEGA MGC COFFEE<br><span>5,817<span>만원</span></span></span></h3>
+              <p class="m-tit">지금, 메가MGC커피에서 창업성공 스토리를 경험해보세요.</p>
+              <p class="m-txt">
+                합리적인 창업비용과 다양한 경험을 바탕으로,
+                다양한 노하우를 전수하여 창업 성공을 약속드립니다.
+              </p>
+            </article>
+            <article class="art art-last">
+              <div class="iframe-box">
+                <iframe src="https://www.youtube.com/embed/Ppe5NIRco8A" title="메가MGC커피 창업 정보 안내" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+              <div class="shortcut"><a href="#">창업문의 바로가기</a></div>
+            </article>
           </div>
         </section>
+
         <section class="swiper-slide swiper-sec-slide sec-mega">
           <div class="container">
-            <h2 class="sec-tit">MEGA</h2>
+            <h2 class="sec-tit none">MEGA</h2>
+            <article class="art-mega art-mega-first art-first art">
+              <p class="m-tit">메가MGC커피 이야기</p>
+              <h3 class="l-tit">MEGA SIZE<br><span>& 2 SHOT</span></h3>
+              <p class="m-tit">
+                100% 프리미엄 아라비카 원두를 로스팅하여,
+                <br class="pc">
+                깊고 부드러운 커피와 빅 사이즈로 구성된
+                <br class="pc">
+                다양한 음료를 합리적인 가격으로 제공합니다.
+              </p>
+              <p class="m-txt">
+                좋은 품질의 재료를, 합리적인 가격으로 제공하여
+                <br class="pc">
+                좋은 품질의 음료를 저렴한 가격으로 만나보실 수 있습니다.
+              </p>
+              <button class="btn-brand"><a href="#">브랜드소개</a></button>
+              <button class="btn-ask"><a href="#">창업문의</a></button>
+            </article>
+            <article class="art-mega art-mega-last art art-last"></article>
           </div>
         </section>
+
         <section class="swiper-slide swiper-sec-slide sec-event">
           <div class="container">
-            <h2 class="sec-tit">EVENT</h2>
+            <h2 class="sec-tit none">EVENT</h2>
+            <article class="art-event art-event-first">
+              <p class="m-tit">메가MGC커피 소식</p>
+              <h3 class="l-tit"><span>MEGA EVENT</span></h3>
+              <ul class="event-card">
+                <a href="#">
+                  <li>
+                    <div class="imgbox"><img src="./assets/images/img-event01.jpg" alt=""></div>
+                    <div class="card-con">
+                      <h4 class="card-tit"><p>메가MGC커피X미니언즈 시즌 출시 기념 이벤트</p></h4>
+                      <p class="card-date">2023-12-06</p>
+                    </div>
+                  </li>
+                </a>
+                <a href="#">
+                  <li>
+                    <div class="imgbox"><img src="./assets/images/img-event02.jpg" alt=""></div>
+                    <div class="card-con">
+                      <h4 class="card-tit">겨울시즌 오픈 기념 이벤트</h4>
+                      <p class="card-date">2023-10-25</p>
+                    </div>
+                  </li>
+                </a>
+                <a href="#">
+                  <li>
+                    <div class="imgbox"><img src="./assets/images/img-event03.jpg" alt=""></div>
+                    <div class="card-con">
+                      <h4 class="card-tit">[이벤트] 메가MGC커피 X 우주패스 가입 혜택 EVENT (10/1~)</h4>
+                      <p class="card-date">2023-09-25</p>
+                    </div>
+                  </li>
+                </a>
+              </ul>
+              <p class="sub-txt">전체 매장 및 각 매장에서 다양한 이벤트가 진행중 입니다.</p>
+              <div class="btn-event">이벤트 더보기</div>
+            </article>
           </div>
         </section>
+
       </div>
       <div class="swiper-pagination swiper-sec-pagination"></div>
       
@@ -511,7 +1249,93 @@
 
 
     <footer id="footer" class="footer">
-      <div class="container">footer</div>
+      <div class="footer-top">
+        <div class="container">
+          <ul>
+            <li><a href="#"><strong><b>이용약관</b></strong></a></li>
+            <li><a href="#"><strong><b>개인정보처리방침</b></strong></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="footer-left">
+            <ul class="footer-logo">
+              <li><img src="./assets/images/logo-w.png" alt=""></li>
+              <li>
+                <div class="footer-sns">
+                  <div class="imgbox"><a href="#"><img src="./assets/images/sns_blog.png" alt=""></a></div>
+                  <div class="imgbox"><a href="#"><img src="./assets/images/sns_facebook.png" alt=""></a></div>
+                  <div class="imgbox"><a href="#"><img src="./assets/images/sns_instagram.png" alt=""></a></div>
+                </div>
+              </li>
+            </ul>
+            <address class="address">
+              <ul>
+                <li><b>주식회사 앤하우스</b></li>
+                <li>대표자 김대영</li>
+                <li>창업상담 1588-0656</li>
+                <li>고객센터 1588-8298</li>
+                <li>FAX 02-325-5199</li>
+                <li>사업자등록번호 105-87-51367</li>
+                <li>서울특별시 강남구 강남대로 518 11층, 13층 (주)앤하우스</li>
+                <li>개인정보보호 관리책임자 이호민</li>
+              </ul>
+            </address>
+          </div>
+          <div class="footer-right">
+            <ul class="footer-nav">
+              <li>
+                <p class="footer-nav-tit">메가 스토리</p>
+                <ul class="footer-nav-sub">
+                  <li><a href="#">브랜드</a></li>
+                  <li><a href="#">BI</a></li>
+                  <li><a href="#">오시는길</a></li>
+                </ul>
+              </li>
+              <li>
+                <p class="footer-nav-tit">메뉴소개</p>
+                <ul class="footer-nav-sub">
+                  <li><a href="#">음료</a></li>
+                  <li><a href="#">푸드</a></li>
+                  <li><a href="#">상품</a></li>
+                </ul>
+              </li>
+              <li>
+                <p class="footer-nav-tit">매장</p>
+                <ul class="footer-nav-sub">
+                  <li><a href="#">매장찾기</a></li>
+                </ul>
+              </li>
+              <li>
+                <p class="footer-nav-tit">창업안내</p>
+                <ul class="footer-nav-sub">
+                  <li><a href="#">개설비용</a></li>
+                  <li><a href="#">인테리어</a></li>
+                  <li><a href="#">창업문의</a></li>
+                  <li><a href="#">창업뉴스</a></li>
+                </ul>
+              </li>
+              <li>
+                <p class="footer-nav-tit">메가소식</p>
+                <ul class="footer-nav-sub">
+                  <li><a href="#">공지사항</a></li>
+                  <li><a href="#">이벤트</a></li>
+                  <li><a href="#">FAQ</a></li>
+                  <li><a href="#">고객의 소리</a></li>
+                </ul>
+              </li>
+              <li>
+                <p class="footer-nav-tit">제휴문의</p>
+                <ul class="footer-nav-sub">
+                  <li><a href="#">상품제안</a></li>
+                  <li><a href="#">마케팅 제휴</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
   </section>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -529,6 +1353,11 @@
     function fnDisplay(el,opt){
       el.style.display=opt;
     }
+
+    //iframe 높이 조절
+    function fnAutoHeight(widthValue){
+      return widthValue*0.5645;
+    }
     // ------------ 함수 구역 끝 ------------
 
 
@@ -537,7 +1366,7 @@
     //main swiper 설정
     const swiperSec = new Swiper(".swiper-sec", {
       direction: "vertical",
-      speed:200,
+      speed:600,
       mousewheel: true,
       pagination: {
         el: ".swiper-sec-pagination",
@@ -667,16 +1496,16 @@
       }
       else if(1270<window.innerWidth && window.innerWidth<1280){
         fnDisplay(btnNavOpen,'flex');
-      }
-    }//네비 활성화 & 창 크기 변경시 네비버튼 나타남 수정 필요
-    
+      }//네비 활성화 & 창 크기 변경시 네비버튼 나타남 수정 필요
+      iframeVideo.style.height=toString(fnAutoHeight(iframeVideo.style.width))+'px';
+    }
     // ------------ header 끝 ------------
 
 
     // ------------ main banner swiper ------------
     const swiperMainBanner = new Swiper(".swiper-main-banner", {
       direction: "horizontal",
-      speed:200,
+      speed:400,
       mousewheel: false,
       pagination: {
         el: ".swiper-main-banner-pagination",
@@ -684,6 +1513,25 @@
       },
     });
     // ------------ main banner swiper 끝 ------------
+
+
+    // ------------ menu swiper ------------
+    const swiperMenu = new Swiper(".swiper-menu",{
+      direction:'horizontal',
+      navigation:{
+        nextEl:'.swiper-button-next',
+        prevEl:'.swiper-button-prev',
+      },
+      slidesPerView:'auto',
+      spaceBetween:20,
+    })
+    // ------------ menu swiper 끝 ------------
+
+
+    // ------------ franchise ------------
+    const iframeVideo=document.getElementsByClassName('iframe-box')[0];
+    
+    // ------------ franchise 끝 ------------
   </script>
 </body>
 </html>
