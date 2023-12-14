@@ -17,6 +17,7 @@
       font-weight: 500;
       font-size: 16px;
       color: #1c1c1b;
+      line-height: 1;
       word-break: keep-all;
     }
     ::-webkit-scrollbar{
@@ -58,6 +59,31 @@
       display: block;
       margin: 0 auto;
     }
+    span.underline{
+      position: relative;
+      display: inline-block;
+      z-index: 200;
+    }
+    span.underline::before{
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      width: 105%;
+      height: 0.6em;
+      right: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      transition: 1.1s;
+      transition-delay: 0.4s;
+    }
+    .swiper-slide-active span.underline::before{
+      transform: translateX(-50%) scaleX(1);
+    }
+    .under-760::before{
+      display: none;
+    }
     .header{
       position: fixed;
       top: 0;
@@ -71,13 +97,15 @@
       align-items: flex-start;
       padding: 30px 0;
       overflow: hidden;
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
     }
     .header .container{
       align-items: center;
       display: grid;
       grid-template-columns: repeat(11,1fr) auto;
+      max-width: 100%;
       width: 100%;
-      padding: 0px;
+      padding: 0px 20px;
     }
     .header .logo{
       grid-column: 1/3;
@@ -356,6 +384,11 @@
       width: 450px;
       overflow: hidden;
     }
+    .art-menu-first{
+      padding-top: 180px;
+      padding-left: calc(50% - 535px);
+      font-size: 1.02em;
+    }
     .art-menu-first .btn-menu a{
       display: inline-block;
       background-color: var(--main-color);
@@ -369,6 +402,23 @@
     }
     .swiper-menu .swiper-slide-active .menu-con-box{
       display: block;
+    }
+    .sec-menu .container{
+      padding: 0;
+    }
+    .sec-menu .l-tit{
+      margin-bottom: 40px;
+    }
+    .sec-menu .l-tit span.underline::before{
+      width: 110%;
+      bottom: -5px;
+      background-color: var(--main-color);
+    }
+    .sec-menu .m-tit{
+      font-weight: 400;
+    }
+    .sec-menu .m-txt{
+      font-weight: 300;
     }
     .art-menu-last .menu-con-box .l-tit{
       font-size: 1.4em;
@@ -407,8 +457,18 @@
     .sec-franchise .l-tit{
       line-height: 1em;
     }
-    .sec-franchise .l-tit span{
+    .sec-franchise .l-tit span.underline::before{
+      background-color: white;
+      height: 1em;
+    }
+    .sec-franchise .l-tit p{
       font-size: 0.8em;
+      display: inline-block;
+    }
+    .sec-franchise .l-tit p span{
+      font-size: 0.6em;
+      font-weight: 400;
+      display: inline-block;
     }
     .sec-franchise .iframe-box{
       height: 350px;
@@ -418,11 +478,30 @@
     }
     .sec-franchise .shortcut{
       padding: 1em 2em;
-      background-color: #1c1c1b;
       font-weight: 700;
       font-size: 1.2em;
       color: white;
       text-align: center;
+    }
+    .sec-franchise .shortcut .moveup:hover{
+      background-color: #703614;
+      border: 1px solid #703614;
+      transform: translateY(-5px);
+      transition: 0.3s;
+      transition-timing-function: linear;
+    }
+    .sec-franchise .shortcut .upper760{
+      background-color: #1c1c1b;
+    }
+    .sec-franchis .shortcut .under760{
+      display: none;
+    }
+    .sec-franchise .under760 .div-wrap{
+      background-color: #1c1c1b;
+      padding: 10px 20px;
+      width: 80%;
+      font-weight: 400;
+      font-size: 0.9em;
     }
     .sec-mega .container{
       padding: 0;
@@ -431,9 +510,16 @@
     .sec-mega .art-first{
       padding-top: 200px;
     }
+    .sec-mega .m-tit{
+      font-size: 1.7em;
+      margin-bottom: 15px;
+    }
     .sec-mega .l-tit{
       font-weight: 900;
       margin-bottom: 20px;
+    }
+    .sec-mega .l-tit span.underline::before{
+      background-color: var(--main-color);
     }
     .sec-mega .btn-brand{
       margin-right: 1em;
@@ -466,10 +552,16 @@
       right: 35%;
       left: 35%;
     }
+    .sec-event .m-tit{
+      margin-bottom: 15px;
+    }
     .sec-event .l-tit{
       font-size: 4em;
       font-weight: 900;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+    }
+    .sec-event .l-tit span.underline::before{
+      background-color: var(--main-color);
     }
     .sec-event .event-card{
       max-width: 1280px;
@@ -492,7 +584,7 @@
     .event-card li .card-con{
       padding: 8%;
       font-weight: 300;
-      font-size: 1.4em;
+      font-size: 1.2em;
       text-align: left;
     }
     .card-con .card-tit{
@@ -501,7 +593,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       word-wrap: normal;
-      height: 1.5em;
+      height: 1em;
     }
     .card-con .card-date{
       font-weight: 300;
@@ -697,8 +789,21 @@
         display: none;
       }
       .art-first{
-        padding: 120px 40px 0;
+        padding: 200px 60px 0;
         font-size: 0.9em;
+      }
+      .sec-menu .art-first{
+        padding: 200px 60px 0 20px;
+        font-size: 0.7em;
+      }
+      .sec-menu .art-first .l-tit{
+        margin-bottom: 20px;
+      }
+      .sec-menu .l-tit span.underline::before{
+        width: 105%;
+      }
+      .sec-menu .art-last{
+        padding-top: 200px;
       }
       .swiper-menu .swiper-slide{
         width: 420px;
@@ -707,6 +812,30 @@
       .art-menu .swiper-button-prev,
       .art-menu .swiper-button-next{
         display: none;
+      }
+      .sec-franchise .l-tit span.underline::before{
+        width: 107%;
+        height: 0.6em;
+      }
+      .sec-franchise .shortcut{
+        padding: 0;
+        width: 100%;
+      }
+      .sec-franchise .shortcut .upper760{
+        width: 100%;
+      }
+      .sec-franchise .shortcut .upper760 a{
+        display: inline-block;
+        padding: 1em 2em;
+      }
+      .sec-mega .art-first{
+        padding-top: 260px;
+      }
+      .sec-event .art-event{
+        padding: 0 60px;
+      }
+      .sec-event .l-tit{
+        font-size: 3em;
       }
       .footer-top{
         font-size: 0.8em;
@@ -719,12 +848,11 @@
         padding: 0;
       }
       .footer-bottom .container{
-        margin-bottom: 30px;
         padding: 30px;
         display: flex;
       }
       .footer-left .footer-logo{
-        flex-flow: column nowrap;
+        flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
       }
@@ -733,9 +861,7 @@
       }
       .footer-logo li{
         margin: 0;
-      }
-      .footer-logo li:last-of-type{
-        margin-top: 15px;
+        margin-right: 20px;
       }
       .footer-sns .imgbox:last-of-type{
         margin-right: 0;
@@ -766,6 +892,9 @@
       }
     }
     @media(max-width:760px){
+      .under-760::before{
+        display: block;
+      }
       .header{
         height: auto !important;
       }
@@ -851,19 +980,60 @@
         white-space: normal;
         height: 30px;
       }
+      .sec-franchise .container{
+        padding: 0 30px;
+      }
       .sec-franchise .art-first{
-        padding-top: 80px;
+        padding: 0;
+        padding-top: 195px;
+        font-size: 0.6em;
+      }
+      .sec-franchise .m-tit{
+        font-weight: 400;
+        font-size: 1.7em;
+      }
+      .sec-franchise .l-tit span.underline::before{
+        height: 0.6em;
+        bottom: -3px;
+      }
+      .sec-franchise .l-tit span.not760::before{
+        display: none;
+      }
+      .sec-franchise .l-tit p.mrt15{
+        margin-top: 15px;
+        font-size: 1em;
+      }
+      .sec-franchise .m-txt{
+        font-weight: 300;
+        font-size: 1.3em;
       }
       .sec-franchise .art-last{
         padding-top: 10px;
         padding-left: 10px;
         padding-right: 10px;
       }
+      .sec-franchise .shortcut{
+        margin-top: 10px;
+        padding: 0;
+      }
+      .sec-franchise .shortcut .upper760{
+        display: none;
+      }
+      .sec-franchise .shortcut .under760{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+      }
+      .sec-franchise .iframe-box{
+        height: 226px;
+      }
       .sec-mega .art-first{
         position: relative;
         z-index: 10;
         font-size: 0.6em;
-        padding-top: 35vh;
+        padding: 35vh 30px 0;
       }
       .sec-mega .art-first .m-txt{
         margin-bottom: 4em;
@@ -880,26 +1050,40 @@
       .sec-event{
         background-color: white;
       }
+      .sec-event .container{
+        margin-top: 140px;
+      }
       .sec-event .art-event{
         padding: 30px;
         padding-top: 60px;
       }
       .sec-event .l-tit{
         font-size: 2em;
+        margin-bottom: 20px;
       }
       .sec-event .m-tit{
-        margin-bottom: 15px;
+        font-weight: 300;
       }
       .sec-event .event-card{
-        grid-template-columns: repeat(3,1fr);
-        grid-template-columns: 1fr;
+        flex-flow: row wrap;
+        align-items: center;
+        margin: 30px 0;
+      }
+      .sec-event .event-card a{
+        width: 100%;
       }
       .event-card li{
         grid-column: 1/-1;
         flex-flow: row nowrap;
+        margin-bottom: 10px;
+        height: 112px;
       }
       .event-card .imgbox{
         width: 120px;
+      }
+      .event-card .imgbox img{
+        width: 120px;
+        height: 120px;
       }
       .event-card li .card-con{
         padding: 10px;
@@ -914,15 +1098,15 @@
         height: 40px;
         padding: 0 20px;
       }
+      .footer-bottom .container{
+        padding: 0 0 30px 0;
+      }
       .footer-top{
         padding: 15px;
         font-size: 0.8em;
       }
       .footer-bottom{
         padding: 30px;
-      }
-      .footer-bottom .container{
-        margin-bottom: 30px;
       }
       .footer-left .footer-logo{
         flex-flow: column nowrap;
@@ -944,7 +1128,14 @@
       .footer-left .address ul{
         justify-content: center;
         align-items: center;
-        font-size: 0.8em;
+        row-gap: 7px;
+        font-weight: 300;
+        font-size: 0.75em;
+      }
+    }
+    @media(min-width:760px){
+      .sec-franchise .shortcut .under760{
+        display: none !important;
       }
     }
   </style>
@@ -1054,7 +1245,7 @@
             <h2 class="sec-tit none">MENU</h2>
             <article class="art-menu art-menu-first art-first art">
               <p class="m-tit">귀여운 악당 미니언즈의 우당탕탕</p>
-              <h3 class="l-tit"><span>Happy MEGA Party</span></h3>
+              <h3 class="l-tit"><span class="underline">Happy MEGA Party</span></h3>
               <p class="m-tit">메가MGC커피와 미니언즈가 함께하는 겨울 신메뉴</p>
               <p class="m-txt">
                 미니언즈를 닮은 홀케이크부터 음료, 귀여운 굿즈까지
@@ -1160,7 +1351,7 @@
             <h2 class="sec-tit none">FRANCHISE</h2>
             <article class="art-fran art-fran-first art-first art">
               <p class="m-tit">거품 없는 창업비용</p>
-              <h3 class="l-tit"><span>FRANCHISE<br>MEGA MGC COFFEE<br><span>5,817<span>만원</span></span></span></h3>
+              <h3 class="l-tit">FRANCHISE<br><span class="underline under-760">MEGA MGC <span class="underline not760">COFFEE</span></span><br><p class="mrt15">5,817<span>만원</span></p></h3>
               <p class="m-tit">지금, 메가MGC커피에서 창업성공 스토리를 경험해보세요.</p>
               <p class="m-txt">
                 합리적인 창업비용과 다양한 경험을 바탕으로,
@@ -1171,7 +1362,27 @@
               <div class="iframe-box">
                 <iframe src="https://www.youtube.com/embed/Ppe5NIRco8A" title="메가MGC커피 창업 정보 안내" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
-              <div class="shortcut"><a href="#">창업문의 바로가기</a></div>
+              <div class="shortcut">
+                <div class="upper760 moveup">
+                  <a href="#">창업문의 바로가기</a>
+                </div>
+                <div class="under760">
+                  <div class="div-wrap">
+                    <a href="#">
+                      <div class="btn-call moveup">
+                        전화 문의
+                      </div>
+                    </a>
+                  </div>
+                  <div class="div-wrap">
+                    <a href="#">
+                      <div class="btn-receipt moveup">
+                        상담 접수
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </article>
           </div>
         </section>
@@ -1181,7 +1392,7 @@
             <h2 class="sec-tit none">MEGA</h2>
             <article class="art-mega art-mega-first art-first art">
               <p class="m-tit">메가MGC커피 이야기</p>
-              <h3 class="l-tit">MEGA SIZE<br><span>& 2 SHOT</span></h3>
+              <h3 class="l-tit">MEGA SIZE<br><span class="underline">& 2 SHOT</span></h3>
               <p class="m-tit">
                 100% 프리미엄 아라비카 원두를 로스팅하여,
                 <br class="pc">
@@ -1206,7 +1417,7 @@
             <h2 class="sec-tit none">EVENT</h2>
             <article class="art-event art-event-first">
               <p class="m-tit">메가MGC커피 소식</p>
-              <h3 class="l-tit"><span>MEGA EVENT</span></h3>
+              <h3 class="l-tit"><span class="underline">MEGA EVENT</span></h3><!-- z-index:200 -->
               <ul class="event-card">
                 <a href="#">
                   <li>
@@ -1260,10 +1471,10 @@
       <div class="footer-bottom">
         <div class="container">
           <div class="footer-left">
-            <ul class="footer-logo">
+            <ul class="footer-logo"><!-- display:flex -->
               <li><img src="./assets/images/logo-w.png" alt=""></li>
               <li>
-                <div class="footer-sns">
+                <div class="footer-sns"><!-- display:flex -->
                   <div class="imgbox"><a href="#"><img src="./assets/images/sns_blog.png" alt=""></a></div>
                   <div class="imgbox"><a href="#"><img src="./assets/images/sns_facebook.png" alt=""></a></div>
                   <div class="imgbox"><a href="#"><img src="./assets/images/sns_instagram.png" alt=""></a></div>
